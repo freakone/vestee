@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.4.0">
+<eagle version="7.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -14,13 +14,13 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
@@ -153,8 +153,8 @@
 <wire x1="22.825" y1="17.525009375" x2="22.9750125" y2="17.674996875" width="0.063396875" layer="121"/>
 <circle x="23.400003125" y="17.774996875" radius="0.12499375" width="0" layer="121"/>
 <text x="24.000003125" y="18.9999875" size="1.27" layer="121" font="vector" rot="R270">3V3</text>
-<wire x1="23.49299375" y1="9.33800625" x2="23.49299375" y2="8.32200625" width="0.2032" layer="121"/>
-<circle x="24.88999375" y="10.10000625" radius="2.49999375" width="0.2032" layer="121"/>
+<wire x1="22.49299375" y1="8.33800625" x2="22.49299375" y2="7.32200625" width="0.2032" layer="121"/>
+<circle x="24.88999375" y="10.10000625" radius="0.729453125" width="0.2032" layer="121"/>
 <text x="23.36599375" y="9.21100625" size="0.4064" layer="121" font="vector" rot="R90">C2</text>
 <wire x1="23.600003125" y1="21.300009375" x2="23.600003125" y2="20.700009375" width="0.1524" layer="121"/>
 <wire x1="22.40000625" y1="21.300009375" x2="22.40000625" y2="20.700009375" width="0.1524" layer="121"/>
@@ -178,11 +178,11 @@
 <rectangle x1="53.626409375" y1="24.9126" x2="54.236009375" y2="26.4874" layer="121"/>
 <text x="53.966009375" y="22.843" size="1.27" layer="121" font="vector">D3</text>
 <text x="38.22999375" y="20.278003125" size="1.27" layer="121" font="vector">ELECTRODE</text>
-<wire x1="23.722990625" y1="23.222" x2="23.722990625" y2="26.778" width="0.2032" layer="121"/>
-<wire x1="23.722990625" y1="26.778" x2="30.277003125" y2="26.778" width="0.2032" layer="121"/>
-<wire x1="30.277003125" y1="26.778" x2="30.277003125" y2="23.222" width="0.2032" layer="121"/>
-<wire x1="30.277003125" y1="23.222" x2="23.722990625" y2="23.222" width="0.2032" layer="121"/>
-<text x="29.539996875" y="24.9492" size="1.27" layer="121" font="vector" rot="R180">IC1</text>
+<wire x1="23.722990625" y1="21.222" x2="23.722990625" y2="24.778" width="0.2032" layer="121"/>
+<wire x1="23.722990625" y1="24.778" x2="30.277003125" y2="24.778" width="0.2032" layer="121"/>
+<wire x1="30.277003125" y1="24.778" x2="30.277003125" y2="21.222" width="0.2032" layer="121"/>
+<wire x1="30.277003125" y1="21.222" x2="23.722990625" y2="21.222" width="0.2032" layer="121"/>
+<text x="29.539996875" y="23.4492" size="1.27" layer="121" font="vector" rot="R180">IC1</text>
 <wire x1="32.30999375" y1="48.14999375" x2="22.1099875" y2="48.14999375" width="0.2032" layer="121"/>
 <wire x1="22.1099875" y1="48.14999375" x2="22.1099875" y2="42.950003125" width="0.2032" layer="121"/>
 <wire x1="22.1099875" y1="42.950003125" x2="32.30999375" y2="42.950003125" width="0.2032" layer="121"/>
@@ -3154,6 +3154,21 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
 <text x="-0.8" y="-2.4" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 </package>
+<package name="2,54/1,0">
+<description>&lt;b&gt;THROUGH-HOLE PAD&lt;/b&gt;</description>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="1.27" x2="0.762" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="1.27" x2="-0.762" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-1.27" x2="-1.27" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-1.27" x2="-0.762" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="-1.27" x2="1.27" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-1.27" x2="1.27" y2="-0.762" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="1.016" width="0.1524" layer="51"/>
+<pad name="1" x="0" y="0" drill="1.016" diameter="2.54" shape="octagon"/>
+<text x="-1.27" y="1.524" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0" y="1" size="0.0254" layer="27">&gt;VALUE</text>
+</package>
 </packages>
 </library>
 </libraries>
@@ -3424,6 +3439,8 @@ design rules under a new name.</description>
 </element>
 <element name="R17" library="rcl" package="R0805" value="" x="57.34" y="47.54" rot="R270"/>
 <element name="R26" library="rcl" package="R0805" value="" x="57.5" y="35.5" rot="R90"/>
+<element name="PAD3" library="wirepad" package="2,54/1,0" value="WIREPAD2,54/1,0" x="5" y="26"/>
+<element name="PAD4" library="wirepad" package="2,54/1,0" value="WIREPAD2,54/1,0" x="5" y="22.5"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -3498,6 +3515,7 @@ design rules under a new name.</description>
 <wire x1="26.5" y1="40.5" x2="25.14" y2="40.5" width="0.4064" layer="1"/>
 <wire x1="25.14" y1="40.5" x2="24.935" y2="40.705" width="0.4064" layer="1"/>
 <wire x1="24.935" y1="40.705" x2="24.935" y2="41.925" width="0.4064" layer="1"/>
+<contactref element="PAD4" pad="1"/>
 </signal>
 <signal name="VCC">
 <contactref element="U$1" pad="VCC"/>
@@ -3707,6 +3725,8 @@ design rules under a new name.</description>
 <wire x1="5" y1="34.15" x2="4.65" y2="33.8" width="0.4064" layer="1"/>
 <wire x1="13.8567" y1="47.8567" x2="15.1933" y2="47.8567" width="0.4064" layer="1"/>
 <wire x1="15.1933" y1="47.8567" x2="15.21" y2="47.84" width="0.4064" layer="1"/>
+<contactref element="PAD3" pad="1"/>
+<wire x1="5" y1="26" x2="5" y2="35.5" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$9">
 <contactref element="IC2" pad="17"/>
