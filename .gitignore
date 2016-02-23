@@ -4,4 +4,4 @@
 .meteor/local
 .meteor/meteorite
 .meteor/.id
-.meteor
+*.meteor
