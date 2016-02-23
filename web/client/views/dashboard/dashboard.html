@@ -1,0 +1,73 @@
+<template name="dashboard">
+	<div class="template-dashboard">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					{{> generateKey}}
+				</div>
+				<div class="col-md-10">
+					{{> keys}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="generateKey">
+	{{#autoForm id="add" collection="Keys" type="insert"}}
+	<button type="submit" class="btn btn-primary">{{_ "add_key_btn"}}</button>
+	{{/autoForm}}
+</template>
+
+<template name="keys">
+	<div class="template-posts">
+		{{#each  keys}}
+		{{> key}}
+		{{else}}
+		{{> noData}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="key">
+	<div class="template-post">
+		<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						{{title}}
+						<span class="pull-right">
+							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
+							<i class="fa fa-comments"></i> {{commentCount _id}}
+						</span>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-center">
+						{{#with getDoc picture 'Attachments'}}
+							<img src="{{url}}" class="img-thumbnail img-rounded">
+						{{/with}}
+					</p>
+					<div class="media">
+						<a class="pull-left" href="#">
+							{{> avatar userId=owner shape="circle"}}
+						</a>
+						<div class="media-body">
+							<p>{{content}}</p>
+							{{#if $eq owner User._id}}
+							<small>
+								{{#afModal title="Delete post" class="text-danger" collection="Keys" operation="remove" doc=_id}}
+									<i class="fa fa-times" buttonContent="Edit post"></i> {{_ "delete"}}
+								{{/afModal}}
+							</small>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					{{> favoriteButton _id=_id}}
+					{{> commentFormToggle }}
+					{{> comments}}
+				</div>
+		</div>
+	</div>
+</template>

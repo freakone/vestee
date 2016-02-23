@@ -1,3 +1,7 @@
 # App artifacts
 *.b#*
 *.s#*
+.meteor/local
+.meteor/meteorite
+.meteor/.id
+.meteor
