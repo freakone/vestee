@@ -42,12 +42,13 @@
 
 
 	/*Dashboard*/
-	"add_key_btn": "Add API key",
+	"add_key_btn": "Add new device",
 	"add_post_modal": "Add with a modal",
 	"add_post_modal_btn": "Add a new post",
 	"edit_post": "Edit post",
 	"delete": "Delete",
 	"favorites": "Favorites",
+	"device_view": "Device charts",
 
 	/*Account*/
 	"account_details": "Account Details",

@@ -15,6 +15,7 @@
 
 <template name="generateKey">
 	{{#autoForm id="add" collection="Keys" type="insert"}}
+		{{> afQuickField name="name"}}
 		<button type="submit" class="btn btn-primary">{{_ "add_key_btn"}}</button>
 	{{/autoForm}}
 </template>
@@ -32,15 +33,21 @@
 		<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						{{key}}
-						{{#if $eq owner User._id}}
-							<small>
-								{{#afModal title="Delete post" class="text-danger" collection="Keys" operation="remove" doc=_id}}
-									<i class="fa fa-times" buttonContent="Edit post"></i> {{_ "delete"}}
-								{{/afModal}}
-							</small>
-						{{/if}}
+						{{name}}
 					</h3>
+				</div>
+				<div class="panel-body">
+					API key: {{key}}
+
+					<span class="pull-right">
+						{{#if $eq owner User._id}}
+									{{#afModal title="Delete post" class="text-danger" collection="Keys" operation="remove" doc=_id}}
+										<i class="fa fa-times" buttonContent="Edit post"></i> {{_ "delete"}}
+									{{/afModal}}
+						{{/if}}
+					</span>
+
+					<span class="pull-right text-success"><i class="fa fa-line-chart" buttonContent="Device view"></i> {{_ "device_view"}} &nbsp;</span>
 				</div>
 		</div>
 	</div>

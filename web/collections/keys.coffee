@@ -1,12 +1,18 @@
 @Keys = new Meteor.Collection('keys');
 
 Schemas.Keys = new SimpleSchema(
+
+	name:
+		type:String
+		max: 100
+
 	key:
 		type:String
-		max: 60
+		max: 40
+		unique: true
 		autoValue: ->
 			if this.isInsert
-				Random.hexString(20).toLowerCase()
+				Random.hexString(30).toLowerCase()
 
 	createdAt:
 		type: Date
