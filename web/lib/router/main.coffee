@@ -12,9 +12,7 @@ Router.map ->
     data: ->
       keys: Keys.find({},{sort: {createdAt: -1}}).fetch()
 
-  @route "device",
-    path: '/device/:_id'
-    onBeforeAction: ->
-
+  @route "charts",
+    path: '/charts/:_id'
     data: ->
       Keys.findOne(this.params._id)
