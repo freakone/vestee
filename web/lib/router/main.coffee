@@ -14,5 +14,9 @@ Router.map ->
 
   @route "charts",
     path: '/charts/:_id'
+    waitOn: ->
+      [
+        subs.subscribe 'keys', this.userId
+      ]
     data: ->
       Keys.findOne(this.params._id)

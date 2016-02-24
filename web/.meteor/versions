@@ -89,6 +89,7 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+maazalik:highcharts@0.4.0
 manuelschoebel:ms-seo@0.4.1
 matb33:collection-hooks@0.8.1
 mdg:validation-error@0.2.0
@@ -111,7 +112,6 @@ mongo-livedata@1.0.9
 mpowaga:jquery-fileupload@9.11.2
 mpowaga:jquery-ui-widget@1.11.4
 mpowaga:string-template@0.1.0
-mrt:chartjs@0.0.6
 mrt:moment@2.8.1
 multiply:iron-router-progress@1.0.2
 natestrauser:animate-css@3.4.0
