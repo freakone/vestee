@@ -33,7 +33,6 @@ jparker:gravatar
 tap:i18n
 useraccounts:bootstrap
 service-configuration
-yogiben:mixpanel
 juliancwirko:s-alert
 juliancwirko:s-alert-stackslide
 momentjs:moment
