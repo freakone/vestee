@@ -31,7 +31,12 @@ Template.charts.helpers
                     ]
             series:
                 [
+                    animation: false
+                    lineWidth: 2
                     name: sensorName
+                    marker:
+                        enabled: true
+                        radius: 3
                     data: data.map (item) ->
                         [item.createdAt.valueOf(), item.value]
                 ]
