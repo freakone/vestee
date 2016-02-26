@@ -7,7 +7,7 @@ Router.map ->
     path: "/dashboard"
     waitOn: ->
       [
-        subs.subscribe 'devices', this.userId
+        subs.subscribe 'devices'
       ]
     data: ->
       devices: Devices.find({},{sort: {createdAt: -1}}).fetch()
@@ -16,7 +16,12 @@ Router.map ->
     path: '/charts/:_id'
     waitOn: ->
       [
-        subs.subscribe 'devices', this.userId
+        subs.subscribe 'devices'
+        subs.subscribe 'sensors', this.params._id
+        for sensor in Sensors.find().fetch()
+          subs.subscribe 'measurements', this.params._id, sensor.id
       ]
     data: ->
-      Devices.findOne(this.params._id)
+      device: Devices.findOne(this.params._id)
+      sensors: Sensors.find().fetch()
+

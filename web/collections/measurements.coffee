@@ -14,6 +14,10 @@ Schemas.Measurements = new SimpleSchema(
     type:Number
     decimal:true
 
+  owner:
+    type: String
+    regEx: SimpleSchema.RegEx.Id
+
   createdAt:
     optional: true
     type: Date
