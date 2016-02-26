@@ -20,7 +20,7 @@ Template.charts.helpers
                         {
                             type: 'minute'
                             count: 15
-                            text: '15min'
+                            text: '15m'
                         }
                         {
                             type: 'minute'
@@ -30,7 +30,12 @@ Template.charts.helpers
                         {
                             type: 'day'
                             count: 1
-                            text: '1day'
+                            text: '1d'
+                        }
+                        {
+                            type: 'day'
+                            count: 7
+                            text: '1w'
                         }
                         {
                             type: 'all',
@@ -43,15 +48,13 @@ Template.charts.helpers
                         valueSuffix: sensor.unit
 
                     animation: false
-                    lineWidth: 2
+                    lineWidth: 3
                     name: sensor.name
                     marker:
                         enabled: true
-                        radius: 3
+                        radius: 4
                     data: data.map (item) ->
                         [item.createdAt.valueOf(), item.value]
                 ]
         Meteor.defer () ->
-            Highcharts.chart sensorDiv, style
-
-
+            Highcharts.StockChart style

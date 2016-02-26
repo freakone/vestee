@@ -1,3 +1,12 @@
 {
-  
+  "version": "4.2.3",
+  "base": "highstock.js",
+  "adapter": "default",
+  "modules": [
+    "highcharts-3d.src.js",
+    "modules/exporting.js",
+    "modules/heatmap.js",
+    "modules/drilldown.js",
+    "themes/sand-signika.js"
+  ]
 }
