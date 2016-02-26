@@ -13,10 +13,6 @@
 			children: [
 				{
 					find: (comment) ->
-						Keys.find comment.doc, limit: 1
-				}
-				{
-					find: (comment) ->
 						Meteor.users.find comment.owner, limit: 1
 				}
 			]

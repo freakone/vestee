@@ -1,4 +1,5 @@
-// myTemplate.js
+// Template.charts.rendered = () ->
+
 Template.charts.topGenresChart = function() {
     return {
         chart: {
@@ -7,7 +8,7 @@ Template.charts.topGenresChart = function() {
             plotShadow: false
         },
         title: {
-            text: this.username + "'s top genres"
+            text: this.user + "'s top genres"
         },
         tooltip: {
             pointFormat: '<b>{point.percentage:.1f}%</b>'

@@ -1,13 +1,9 @@
 @Measurements = new Meteor.Collection('measurements');
 
 Measurements.before.insert (userId, doc) ->
-   throw new Meteor.Error(403, "No such API key") if not Keys.findOne({key: doc.key})
+   throw new Meteor.Error(403, "No sensor with such ID") if not Sensors.findOne({id: doc.id})
 
 Schemas.Measurements = new SimpleSchema(
-
-  name:
-    type:String
-    max: 100
 
   id:
     type:Number
@@ -17,10 +13,6 @@ Schemas.Measurements = new SimpleSchema(
   value:
     type:Number
     decimal:true
-
-  key:
-    type:String
-    max: 40
 
   createdAt:
     optional: true

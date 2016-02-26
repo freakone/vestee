@@ -1,6 +1,6 @@
-@Keys = new Meteor.Collection('keys');
+@Devices = new Meteor.Collection('devices');
 
-Schemas.Keys = new SimpleSchema(
+Schemas.Devices = new SimpleSchema(
 
 	name:
 		type:String
@@ -33,6 +33,6 @@ Schemas.Keys = new SimpleSchema(
 					value: user._id
 )
 
-Keys.attachSchema Schemas.Keys
+Devices.attachSchema Schemas.Devices
 
 @StarterSchemas = Schemas

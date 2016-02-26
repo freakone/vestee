@@ -6,7 +6,7 @@ ProfilePictures.allow
 	download: (userId)->
 		true
 
-Keys.allow
+Devices.allow
 	insert: (userId, doc) ->
 		userId == doc.owner
 	remove: (userId, doc) ->

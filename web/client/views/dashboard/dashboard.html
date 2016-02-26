@@ -6,7 +6,7 @@
 					{{> generateKey}}
 				</div>
 				<div class="col-md-10">
-					{{> keys}}
+					{{> devices}}
 				</div>
 			</div>
 		</div>
@@ -14,21 +14,21 @@
 </template>
 
 <template name="generateKey">
-	{{#autoForm id="add" collection="Keys" type="insert"}}
+	{{#autoForm id="add" collection="Devices" type="insert"}}
 		{{> afQuickField name="name"}}
 		<button type="submit" class="btn btn-primary">{{_ "add_key_btn"}}</button>
 	{{/autoForm}}
 </template>
 
-<template name="keys">
+<template name="devices">
 	<div class="template-posts">
-		{{#each keys}}
-			{{> key}}
+		{{#each devices}}
+			{{> device}}
 		{{/each}}
 	</div>
 </template>
 
-<template name="key">
+<template name="device">
 	<div class="template-post">
 		<div class="panel panel-default">
 				<div class="panel-heading">
@@ -41,7 +41,7 @@
 
 					<span class="pull-right">
 						{{#if $eq owner User._id}}
-									{{#afModal title="Delete post" class="text-danger" collection="Keys" operation="remove" doc=_id}}
+									{{#afModal title="Delete device" class="text-danger" collection="Devices" operation="remove" doc=_id}}
 										<i class="fa fa-times" buttonContent="Edit post"></i> {{_ "delete"}}
 									{{/afModal}}
 						{{/if}}
