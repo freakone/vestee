@@ -7,30 +7,38 @@ Template.charts.helpers
         data = Measurements.find({id: sensorId}).fetch()
 
         style =
-            chart:
-                plotBackgroundColor: null
-                plotBorderWidth: null
-                plotShadow:false
-                spacingRight:10
             title:
                 text: sensorName
-            tooltip:
-                valueSuffix: sensorUnit
-            xAxis:
-                type: 'datetime'
-                labels:
-                    format: '{value:%m.%d %H:%M}'
-                    rotation: -90
-                    align: 'right'
-            yAxis:
-                plotLines:
+
+            rangeSelector:
+                selected: 0
+                buttons:
                     [
-                        value: 0
-                        value: 1
-                        color: '#808080'
+                        {
+                            type: 'minute'
+                            count: 15
+                            text: '15min'
+                        }
+                        {
+                            type: 'minute'
+                            count: 60
+                            text: '1h'
+                        }
+                        {
+                            type: 'day'
+                            count: 1
+                            text: '1day'
+                        }
+                        {
+                            type: 'all',
+                            text: 'All'
+                        }
                     ]
             series:
                 [
+                    tooltip:
+                        valueSuffix: sensorUnit
+
                     animation: false
                     lineWidth: 2
                     name: sensorName
@@ -42,4 +50,5 @@ Template.charts.helpers
                 ]
 
         Meteor.defer () ->
-            Highcharts.chart sensorDiv, style
+            $('#' + sensorDiv).highcharts('StockChart', style)
+            # Highcharts.chart sensorDiv, style
