@@ -68,6 +68,9 @@ random
 ejson
 spacebars
 check
-maazalik:highcharts
 ddp
 meteorhacks:aggregate
+highcharts:highcharts-meteor
+
+
+highcharts-container

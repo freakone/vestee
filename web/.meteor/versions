@@ -64,6 +64,8 @@ favorites@0.0.4
 fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.4
 handlebars@1.0.4
+highcharts-container@1.0.0
+highcharts:highcharts-meteor@0.2.1
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5
@@ -89,7 +91,6 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
-maazalik:highcharts@0.4.0
 manuelschoebel:ms-seo@0.4.1
 matb33:collection-hooks@0.8.1
 mdg:validation-error@0.2.0

@@ -3,7 +3,9 @@
     <div class="container">
       {{#each sensors}}
          <div class="row">
-          {{> highchartsHelper chartId=_id chartWidth="100%" charHeight="100%" chartObject=(dataChart id name unit) }}
+           <div id="{{_id}}">
+              {{dataChart _id id name unit}}
+           </div>
         </div>
       {{/each}}
     </div>
