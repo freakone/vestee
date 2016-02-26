@@ -2,8 +2,10 @@
   <div class="template-charts">
     <div class="container">
       {{#each sensors}}
-         <div class="row">
-           <div id="{{_id}}" style="width:100%;"></div>
+        <div class="row">
+          <div id="{{_id}}" style="width:100%;">
+            {{dataChart _id id}}
+          </div>
         </div>
       {{/each}}
     </div>

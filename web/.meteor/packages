@@ -70,8 +70,7 @@ spacebars
 check
 ddp
 meteorhacks:aggregate
-highcharts:highcharts-meteor
 
 
 highcharts-container
-jhuenges:highstock
+highcharts:highcharts-meteor
