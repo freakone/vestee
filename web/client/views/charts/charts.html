@@ -1,13 +1,38 @@
 <template name="charts">
   <div class="template-charts">
-    <div class="container">
-      {{#each sensors}}
-        <div class="row">
-          <div id="{{_id}}" class="chart">
-            {{dataChart _id id}}
-          </div>
-        </div>
-      {{/each}}
+    <div class="container" id="main_container">
+      <ul class="nav nav-tabs">
+        {{#each sensors}}
+          {{#if $eq @index 0}}
+            <li class="active">
+               <a data-toggle="tab" href="#tab{{_id}}">{{name}}</a>
+            </li>
+          {{else}}
+            <li>
+               <a data-toggle="tab" href="#tab{{_id}}">{{name}}</a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+
+      <div class="tab-content">
+        {{#each sensors}}
+          {{#if $eq @index 0}}
+            <div id="tab{{_id}}" class="tab-pane fade in active">
+              <div id="{{_id}}" class="chart">
+                  {{dataChart _id id}}
+              </div>
+            </div>
+          {{else}}
+            <div id="tab{{_id}}" class="tab-pane fade">
+              <div id="{{_id}}" class="chart">
+                  {{dataChart _id id}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+
     </div>
   </div>
 </template>

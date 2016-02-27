@@ -1,7 +1,8 @@
 Template.charts.rendered = () ->
     Meteor.defer () ->
-        window.dispatchEvent(new Event('resize'));
-
+        window.onresize = () ->
+            for chart in $(".chart")
+                $("#" + chart.id).highcharts().setSize($("#main_container").width(), 400)
 
 Template.charts.helpers
     dataChart: (sensorDiv, sensorId) ->
@@ -9,8 +10,6 @@ Template.charts.helpers
         data = Measurements.find({id: sensor.id}).fetch()
 
         style =
-            title:
-                text: sensor.name
             chart:
                 renderTo: sensorDiv
             rangeSelector:
@@ -57,4 +56,5 @@ Template.charts.helpers
                         [item.createdAt.valueOf(), item.value]
                 ]
         Meteor.defer () ->
+            style.chart.width = $("#main_container").width()
             Highcharts.StockChart style
