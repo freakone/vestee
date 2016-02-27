@@ -18,10 +18,10 @@ Router.map ->
       [
         subs.subscribe 'devices'
         subs.subscribe 'sensors', this.params._id
-        for sensor in Sensors.find().fetch()
+        for sensor in Sensors.find({owner: this.params._id}).fetch()
           subs.subscribe 'measurements', this.params._id, sensor.id
       ]
     data: ->
       device: Devices.findOne(this.params._id)
-      sensors: Sensors.find().fetch()
+      sensors: Sensors.find({owner: this.params._id}).fetch()
 
