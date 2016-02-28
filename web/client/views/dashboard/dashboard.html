@@ -18,18 +18,17 @@
 		{{> afQuickField name="name"}}
 		<button type="submit" class="btn btn-primary">{{_ "add_key_btn"}}</button>
 	{{/autoForm}}
+	<div class="row separator"></div>
 </template>
 
 <template name="devices">
-	<div class="template-posts">
-		{{#each devices}}
-			{{> device}}
-		{{/each}}
-	</div>
+	{{#each devices}}
+		{{> device}}
+	{{/each}}
 </template>
 
 <template name="device">
-	<div class="template-post">
+	<div class="row template-post">
 		<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">

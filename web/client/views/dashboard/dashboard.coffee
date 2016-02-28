@@ -3,4 +3,4 @@ AutoForm.hooks
     onSuccess: (operation, result, template) ->
       sAlert.success 'New device added'
     onError: (operation, error, template) ->
-      sAlert.error error
+      sAlert.error 'Device adding error'
