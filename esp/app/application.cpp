@@ -5,37 +5,85 @@
 #include <Libraries/DS18S20/ds18s20.h>
 #include <Libraries/DHT/DHT.h>
 
-
-
 #ifndef WIFI_SSID
 	#define WIFI_SSID "updaon" // Put you SSID and Password here
 	#define WIFI_PWD "januchtokutas"
+	#define DEVICE_ID ""
 #endif
 
 HttpServer server;
 int totalActiveSockets = 0;
-DS18S20 ReadTemp;
+DS18S20 ds18;
 Timer procTimer;
 FTPServer ftp;
 DHT dht(14, DHT11);
-MqttClient mqtt("m10.cloudmqtt.com", 12398);
+MqttClient mqtt("vestee.herokuapp.com", 1883);
+DynamicJsonBuffer jsonBuffer;
 
 void publishMessage(String msg)
 {
 	if (mqtt.getConnectionState() != eTCS_Connected)
-		mqtt.connect("esp8266", "rodnztwb", "zEZoYjf0KfX-");
+		mqtt.connect(DEVICE_ID);
 
-	mqtt.publish("sensors", msg); // or publishWithQoS
+	mqtt.publish(DEVICE_ID, msg);
+}
+
+void readDHT()
+{
+	JsonObject& root = jsonBuffer.createObject();
+	root["id"] = 1;
+	root["name"] = "Temperatura zewnetrzna";
+	root["unit"] = "*C";
+	root["value"] = 22.5;
+
+	float dhtHumid, dhtTemp;
+
+	for(int i = 0; i < 5; i++)
+	{
+		dhtHumid = dht.readHumidity();
+		if(dhtHumid)
+			break;
+	}
+
+	for(int i = 0; i < 5; i++)
+	{
+		dhtTemp = dht.readTemperature();
+		if(dhtTemp)
+			break;
+	}
+
+	root["value"] = dhtTemp;
+
+	publishMessage(root.toJsonString());
+
+	root["id"] = 2;
+	root["name"] = "Wilgotnosc zewnetrzna";
+	root["unit"] = "*C";
+	root["value"] = 22.5;
+
+
+
 }
 
 void readData()
 {
+	JsonObject& root = jsonBuffer.createObject();
+	root["id"] = "gps";
+	root["name"] = "Temperatura zewnetrzna";
+	root["unit"] = "*C";
+	root["value"] = 22.5;
+
 	WebSocketsList &clients = server.getActiveWebSockets();
 
 	uint8_t a;
 	uint64_t info;
-	float h = dht.readHumidity();
-	float t = dht.readTemperature();
+	float dhtHumid = dht.readHumidity();
+	float dhtTemp = dht.readTemperature();
+
+	while(!dhtHumid)
+	{
+		dhtHumid = dht.readHumidity();
+	}
 
 	publishMessage(String(t));
 
@@ -117,37 +165,28 @@ void startWebServer()
 	Serial.println("==============================\r\n");
 }
 
-void startFTP()
-{
-	ftp.listen(21);
-	ftp.addUser("me", "123"); // FTP account
-}
-
-// Will be called when WiFi station was connected to AP
 void connectOk()
 {
 	Serial.println("I'm CONNECTED");
 	startWebServer();
-	startFTP();
-	mqtt.connect("esp8266", "rodnztwb", "zEZoYjf0KfX-");
+	mqtt.connect(DEVICE_ID);
 
 	procTimer.initializeMs(10000, readData).start();
 }
 
 void init()
 {
-	spiffs_mount(); // Mount file system, in order to work with files
+	spiffs_mount();
 
-	Serial.begin(SERIAL_BAUD_RATE); // 115200 by default
-	Serial.systemDebugOutput(false); // Enable debug output to serial
+	Serial.begin(SERIAL_BAUD_RATE);
+	Serial.systemDebugOutput(false);
 
-	ReadTemp.Init(16);  			// select PIN It's required for one-wire initialization!
-	ReadTemp.StartMeasure(); // first measure start,result after 1.2 seconds * number of sensors
+	ReadTemp.Init(16);
+	ReadTemp.StartMeasure();
 
 	WifiStation.enable(true);
 	WifiStation.config(WIFI_SSID, WIFI_PWD);
 	WifiAccessPoint.enable(false);
 
-//	// Run our method when station was connected to AP
 	WifiStation.waitConnection(connectOk);
 }
