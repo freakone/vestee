@@ -73,3 +73,4 @@ meteorhacks:aggregate
 
 highcharts-container
 highcharts:highcharts-meteor
+spectrum:mqtt

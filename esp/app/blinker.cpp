@@ -10,14 +10,11 @@
 void Blinker::blink()
 {
 	digitalWrite(ledPin, state);
-
+	state = !state;
 }
 
 void Blinker::setStatus(Status stat)
 {
-	blink();
-	//procTimer.initializeMs(1000, blink);
-	procTimer.start();
 
 }
 

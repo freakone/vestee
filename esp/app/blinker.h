@@ -25,9 +25,9 @@ public:
 	}
 
 	void setStatus(Status stat);
+	void blink();
 private:
 	Status deviceStatus;
-	void blink();
 	Timer procTimer;
 	bool state;
 	uint8_t ledPin;

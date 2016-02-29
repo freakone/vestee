@@ -5,7 +5,8 @@
 #include <Libraries/DS18S20/ds18s20.h>
 #include <Libraries/DHT/DHT.h>
 
-// If you want, you can define WiFi settings globally in Eclipse Environment Variables
+
+
 #ifndef WIFI_SSID
 	#define WIFI_SSID "updaon" // Put you SSID and Password here
 	#define WIFI_PWD "januchtokutas"
@@ -17,6 +18,15 @@ DS18S20 ReadTemp;
 Timer procTimer;
 FTPServer ftp;
 DHT dht(14, DHT11);
+MqttClient mqtt("m10.cloudmqtt.com", 12398);
+
+void publishMessage(String msg)
+{
+	if (mqtt.getConnectionState() != eTCS_Connected)
+		mqtt.connect("esp8266", "rodnztwb", "zEZoYjf0KfX-");
+
+	mqtt.publish("sensors", msg); // or publishWithQoS
+}
 
 void readData()
 {
@@ -26,6 +36,8 @@ void readData()
 	uint64_t info;
 	float h = dht.readHumidity();
 	float t = dht.readTemperature();
+
+	publishMessage(String(t));
 
 	for (int i = 0; i < clients.count(); i++)
 		clients[i].sendString("DHT11: " + String(t) + "*C wilgotnosc: " + String(h) + "%");
@@ -92,38 +104,6 @@ void onFile(HttpRequest &request, HttpResponse &response)
 	}
 }
 
-void wsConnected(WebSocket& socket)
-{
-	totalActiveSockets++;
-
-	// Notify everybody about new connection
-	WebSocketsList &clients = server.getActiveWebSockets();
-	for (int i = 0; i < clients.count(); i++)
-		clients[i].sendString("New friend arrived! Total: " + String(totalActiveSockets));
-}
-
-void wsMessageReceived(WebSocket& socket, const String& message)
-{
-	Serial.printf("WebSocket message received:\r\n%s\r\n", message.c_str());
-	String response = "Echo: " + message;
-	socket.sendString(response);
-}
-
-void wsBinaryReceived(WebSocket& socket, uint8_t* data, size_t size)
-{
-	Serial.printf("Websocket binary data recieved, size: %d\r\n", size);
-}
-
-void wsDisconnected(WebSocket& socket)
-{
-	totalActiveSockets--;
-
-	// Notify everybody about lost connection
-	WebSocketsList &clients = server.getActiveWebSockets();
-	for (int i = 0; i < clients.count(); i++)
-		clients[i].sendString("We lost our friend :( Total: " + String(totalActiveSockets));
-}
-
 void startWebServer()
 {
 	server.listen(80);
@@ -132,11 +112,6 @@ void startWebServer()
 
 	// Web Sockets configuration
 	server.enableWebSockets(true);
-	server.setWebSocketConnectionHandler(wsConnected);
-	server.setWebSocketMessageHandler(wsMessageReceived);
-	server.setWebSocketBinaryHandler(wsBinaryReceived);
-	server.setWebSocketDisconnectionHandler(wsDisconnected);
-
 	Serial.println("\r\n=== WEB SERVER STARTED ===");
 	Serial.println(WifiStation.getIP());
 	Serial.println("==============================\r\n");
@@ -154,6 +129,9 @@ void connectOk()
 	Serial.println("I'm CONNECTED");
 	startWebServer();
 	startFTP();
+	mqtt.connect("esp8266", "rodnztwb", "zEZoYjf0KfX-");
+
+	procTimer.initializeMs(10000, readData).start();
 }
 
 void init()
@@ -165,7 +143,6 @@ void init()
 
 	ReadTemp.Init(16);  			// select PIN It's required for one-wire initialization!
 	ReadTemp.StartMeasure(); // first measure start,result after 1.2 seconds * number of sensors
-	procTimer.initializeMs(10000, readData).start();
 
 	WifiStation.enable(true);
 	WifiStation.config(WIFI_SSID, WIFI_PWD);
