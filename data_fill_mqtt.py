@@ -1,9 +1,10 @@
 import paho.mqtt.client as mqtt
+import time
+from random import randint
 
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
-    # client.subscribe("$SYS/#")
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -12,6 +13,11 @@ def on_message(client, userdata, msg):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("vestee.herokuapp.com", 1883, 60)
-client.publish('bb5269ee02cead865e40f97033b92a', "{'id': 1, 'name':'test', 'unit' : '*C', 'value': 23}")
-client.loop_forever()
+client.connect("vestee.freakone.pl", 1883, 60)
+
+while True:
+  time.sleep(2)
+  client.publish('0bd8fb55a43bc48d25e039f016ffe2', '{"id": 1, "name":"Temperatura zewnetrzna", "unit" : "*C", "value": %d}' % randint(20,30))
+  client.publish('0bd8fb55a43bc48d25e039f016ffe2', '{"id": 2, "name":"Temperatura piwka", "unit" : "*C", "value": %d}'  % randint(10,16))
+
+
