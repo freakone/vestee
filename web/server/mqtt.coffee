@@ -41,8 +41,6 @@ if Meteor.isServer
       delete clients[client.id]
 
     client.on 'error', (err) ->
-      console.log err
-
       return if not clients[client.id]
       client.stream.end();
 

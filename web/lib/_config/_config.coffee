@@ -30,12 +30,6 @@
 	privacyUrl: 'http://vestee.io'
 	termsUrl: 'http://vestee.io'
 
-	# For email footers
-	legal:
-		address: 'Jessnerstrasse 18, 12047 Berlin'
-		name: 'Meteor Factory'
-		url: 'http://benjaminpeterjones.com'
-
 	about: 'http://vestee.io'
 	blog: 'http://blog.vestee.io.io'
 

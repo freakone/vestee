@@ -13,11 +13,11 @@ def on_message(client, userdata, msg):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("vestee.freakone.pl", 1883, 60)
+client.connect("127.0.0.1", 1883, 60)
 
 while True:
-  time.sleep(2)
-  client.publish('0bd8fb55a43bc48d25e039f016ffe2', '{"id": 1, "name":"Temperatura zewnetrzna", "unit" : "*C", "value": %d}' % randint(20,30))
-  client.publish('0bd8fb55a43bc48d25e039f016ffe2', '{"id": 2, "name":"Temperatura piwka", "unit" : "*C", "value": %d}'  % randint(10,16))
+  time.sleep(10)
+  client.publish('21c948b6d5a0c279fea250bb8514bf', '{"id": 1, "name":"Temperatura zewnetrzna", "unit" : "*C", "value": %d}' % randint(20,30))
+  client.publish('854c381b32db9eab5d9ecd7b6858a0', '{"id": 1, "name":"Temperatura piwka", "unit" : "*C", "value": %d}'  % randint(10,16))
 
 

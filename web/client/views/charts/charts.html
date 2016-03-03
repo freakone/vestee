@@ -1,6 +1,7 @@
 <template name="charts">
   <div class="template-charts">
     <div class="container" id="main_container">
+      <h3 style="text-align: center; font-weight: bold;">{{device.name}}</h3>
       <ul class="nav nav-tabs">
         {{#each sensors}}
           {{#if $eq @index 0}}
@@ -14,19 +15,18 @@
           {{/if}}
         {{/each}}
       </ul>
-
       <div class="tab-content">
         {{#each sensors}}
           {{#if $eq @index 0}}
             <div id="tab{{_id}}" class="tab-pane fade in active">
               <div id="{{_id}}" class="chart">
-                  {{dataChart _id id}}
+                  {{dataChart _id id owner}}
               </div>
             </div>
           {{else}}
             <div id="tab{{_id}}" class="tab-pane fade">
               <div id="{{_id}}" class="chart">
-                  {{dataChart _id id}}
+                  {{dataChart _id id owner}}
               </div>
             </div>
           {{/if}}

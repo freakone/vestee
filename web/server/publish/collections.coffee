@@ -10,7 +10,7 @@ Meteor.publish 'measurements', (deviceId, sensorId) ->
 Meteor.methods
   add_data: (api_key, id, name, unit, value) ->
     if device = Devices.findOne({key: api_key})
-      Sensors.upsert(Sensors.findOne({id: id}), {id: id, name: name, unit: unit, owner: device._id})
+      Sensors.upsert(Sensors.findOne({id: id, owner: device._id}), {id: id, name: name, unit: unit, owner: device._id})
       Measurements.insert({id: id, value: value, owner: device._id})
       return "ok"
     return "invalid api key"

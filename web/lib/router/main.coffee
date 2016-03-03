@@ -22,6 +22,6 @@ Router.map ->
           subs.subscribe 'measurements', this.params._id, sensor.id
       ]
     data: ->
-      device: Devices.findOne(this.params._id)
+      device: Devices.findOne({_id: this.params._id})
       sensors: Sensors.find({owner: this.params._id}).fetch()
 

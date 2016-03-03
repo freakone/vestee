@@ -5,9 +5,9 @@ Template.charts.rendered = () ->
                 $("#" + chart.id).highcharts().setSize($("#main_container").width(), 400)
 
 Template.charts.helpers
-    dataChart: (sensorDiv, sensorId) ->
-        sensor = Sensors.findOne({id: sensorId})
-        data = Measurements.find({id: sensor.id}).fetch()
+    dataChart: (sensorDiv, sensorId, deviceId) ->
+        sensor = Sensors.findOne({id: sensorId, owner: deviceId})
+        data = Measurements.find({id: sensor.id, owner: deviceId}).fetch()
 
         style =
             chart:
@@ -53,7 +53,7 @@ Template.charts.helpers
                         enabled: true
                         radius: 4
                     data: data.map (item) ->
-                        [item.createdAt.valueOf(), item.value]
+                        [item.createdAt.valueOf() - item.createdAt.getTimezoneOffset() * 60 * 1000, item.value]
                 ]
         Meteor.defer () ->
             style.chart.width = $("#main_container").width()
