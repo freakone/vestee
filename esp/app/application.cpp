@@ -7,8 +7,8 @@
 #include <sstream>
 
 #ifndef WIFI_SSID
-	#define WIFI_SSID "updaon" // Put you SSID and Password here
-	#define WIFI_PWD "januchtokutas"
+	#define WIFI_SSID "lemur" // Put you SSID and Password here
+	#define WIFI_PWD "lemur123"
 	#define DEVICE_ID "dcb6b983e18be321e82b7d76ff1598"
 #endif
 
@@ -41,13 +41,17 @@ void readDHT()
 	if(dht.readTempAndHumidity(res))
 	{
 		root["value"] = res.temp;
-		publishMessage(root.toJsonString(false));
+		String s = "";
+		root.printTo(s);
+		publishMessage(s);
 
 		root["id"] = 2;
 		root["name"] = "Wilgotnosc zewnetrzna";
 		root["unit"] = "%";
 		root["value"] = res.humid;
-		publishMessage(root.toJsonString(false));
+		s = "";
+		root.printTo(s);
+		publishMessage(s);
 	}
 
 }
@@ -74,7 +78,10 @@ void readDS()
 		        	s += a+1;
 		        	root["name"] = s.c_str();
 					root["id"] = a+3;
-					publishMessage(root.toJsonString(false));
+
+					String s2 = "";
+					root.printTo(s2);
+					publishMessage(s2);
 				}
 		    }
 			ds18.StartMeasure();  // next measure, result after 1.2 seconds * number of sensors
@@ -94,7 +101,7 @@ void connectOk()
 {
 	Serial.println("I'm CONNECTED");
 	mqtt.connect(DEVICE_ID);
-	procTimer.initializeMs(60000, readData).start();
+	procTimer.initializeMs(20000, readData).start();
 }
 
 void init()

@@ -21,7 +21,7 @@ MODULES = app
 
 ## COM port parameter is reqruied to flash firmware correctly.
 ## Windows: 
-COM_PORT = COM12
+COM_PORT = COM5
 
 # MacOS / Linux:
 # COM_PORT = /dev/tty.usbserial
