@@ -5,7 +5,7 @@ Meteor.publish 'sensors', (deviceId) ->
   Sensors.find({owner: deviceId}) if deviceId
 
 Meteor.publish 'measurements', (deviceId, sensorId) ->
-  Measurements.find({owner: deviceId, id: sensorId}) if deviceId
+  Measurements.find({owner: deviceId, id: sensorId}, {sort: {createdAt: -1}, limit: 1000}) if deviceId
 
 Meteor.methods
   add_data: (api_key, id, name, unit, value) ->

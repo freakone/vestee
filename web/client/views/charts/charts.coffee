@@ -5,9 +5,26 @@ Template.charts.rendered = () ->
                 $("#" + chart.id).highcharts().setSize($("#main_container").width(), 400)
 
 Template.charts.helpers
+    active: (indx) ->
+        "active" if indx == 0
+    last_measurement: (sensorId, deviceId) ->
+        sensor = Sensors.findOne({id: sensorId, owner: deviceId})
+        item = Measurements.findOne({id: sensorId, owner: deviceId}, {sort: {createdAt: -1}})
+        item.value + " " + sensor.unit
+    date_style: (sensorId, deviceId) ->
+        item = Measurements.findOne({id: sensorId, owner: deviceId}, {sort: {createdAt: -1}})
+        time = moment(item.createdAt.valueOf() - item.createdAt.getTimezoneOffset() * 60 * 1000)
+        if moment.now() - time > 1000 * 60 * 60 * 12
+            "label-danger"
+        else
+            "label-default"
+    last_date: (sensorId, deviceId) ->
+        item = Measurements.findOne({id: sensorId, owner: deviceId}, {sort: {createdAt: -1}})
+        time = moment(item.createdAt.valueOf() - item.createdAt.getTimezoneOffset() * 60 * 1000)
+        time.format("HH:mm  DD MMM")
     dataChart: (sensorDiv, sensorId, deviceId) ->
         sensor = Sensors.findOne({id: sensorId, owner: deviceId})
-        data = Measurements.find({id: sensor.id, owner: deviceId}).fetch()
+        data = Measurements.find({id: sensor.id, owner: deviceId}, {sort: {createdAt: 1}}).fetch()
 
         style =
             chart:
@@ -45,13 +62,8 @@ Template.charts.helpers
                 [
                     tooltip:
                         valueSuffix: sensor.unit
-
                     animation: false
-                    lineWidth: 3
                     name: sensor.name
-                    marker:
-                        enabled: true
-                        radius: 4
                     data: data.map (item) ->
                         [item.createdAt.valueOf() - item.createdAt.getTimezoneOffset() * 60 * 1000, item.value]
                 ]

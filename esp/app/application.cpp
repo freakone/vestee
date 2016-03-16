@@ -7,9 +7,9 @@
 #include <sstream>
 
 #ifndef WIFI_SSID
-	#define WIFI_SSID "lemur" // Put you SSID and Password here
-	#define WIFI_PWD "lemur123"
-	#define DEVICE_ID "dcb6b983e18be321e82b7d76ff1598"
+	#define WIFI_SSID "" // Put you SSID and Password here
+	#define WIFI_PWD ""
+	#define DEVICE_ID "2cab02b2662973418cf7b765dbf962"
 #endif
 
 HttpServer server;
@@ -20,6 +20,8 @@ FTPServer ftp;
 DHT dht(14, DHT11);
 MqttClient mqtt("vestee.freakone.pl", 1883);
 DynamicJsonBuffer jsonBuffer;
+String s, s2;
+JsonObject& root = jsonBuffer.createObject();
 
 void publishMessage(String msg)
 {
@@ -32,7 +34,6 @@ void publishMessage(String msg)
 
 void readDHT()
 {
-	JsonObject& root = jsonBuffer.createObject();
 	root["id"] = 1;
 	root["name"] = "Temperatura zewnetrzna";
 	root["unit"] = "*C";
@@ -41,7 +42,7 @@ void readDHT()
 	if(dht.readTempAndHumidity(res))
 	{
 		root["value"] = res.temp;
-		String s = "";
+		s = "";
 		root.printTo(s);
 		publishMessage(s);
 
@@ -58,7 +59,7 @@ void readDHT()
 
 void readDS()
 {
-	JsonObject& root = jsonBuffer.createObject();
+
 	root["id"] = "3";
 	root["name"] = "Temperatura piwka";
 	root["unit"] = "*C";
@@ -74,12 +75,12 @@ void readDS()
 		        if (ds18.IsValidTemperature(a))   // temperature read correctly ?
 				{
 		        	root["value"] = ds18.GetCelsius(a);
-		        	String s = "Termometr ";
+		        	s = "Termometr ";
 		        	s += a+1;
 		        	root["name"] = s.c_str();
 					root["id"] = a+3;
 
-					String s2 = "";
+					s2 = "";
 					root.printTo(s2);
 					publishMessage(s2);
 				}
@@ -92,8 +93,8 @@ void readDS()
 void readData()
 {
 	digitalWrite(2, 1);
-	readDHT();
 	readDS();
+	readDHT();
 	digitalWrite(2, 0);
 }
 
@@ -101,7 +102,7 @@ void connectOk()
 {
 	Serial.println("I'm CONNECTED");
 	mqtt.connect(DEVICE_ID);
-	procTimer.initializeMs(20000, readData).start();
+	procTimer.initializeMs(60000 * 5, readData).start();
 }
 
 void init()

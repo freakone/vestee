@@ -4,32 +4,28 @@
       <h3 style="text-align: center; font-weight: bold;">{{device.name}}</h3>
       <ul class="nav nav-tabs">
         {{#each sensors}}
-          {{#if $eq @index 0}}
-            <li class="active">
-               <a data-toggle="tab" href="#tab{{_id}}">{{name}}</a>
-            </li>
-          {{else}}
-            <li>
-               <a data-toggle="tab" href="#tab{{_id}}">{{name}}</a>
-            </li>
-          {{/if}}
+          <li class="{{active @index}}">
+             <a data-toggle="tab" href="#tab{{_id}}">{{name}}</a>
+          </li>
         {{/each}}
       </ul>
       <div class="tab-content">
         {{#each sensors}}
-          {{#if $eq @index 0}}
-            <div id="tab{{_id}}" class="tab-pane fade in active">
-              <div id="{{_id}}" class="chart">
-                  {{dataChart _id id owner}}
+          <div id="tab{{_id}}" class="tab-pane fade in {{active @index}}">
+
+            <div class="row">
+              <div class="col-md-6 col-xs-6 text-center">
+                Last measurement: <span class="label label-default">{{last_measurement id owner}}</span>
+              </div>
+              <div class="col-md-6 col-xs-6 text-center">
+                Last update:  <span class="label {{date_style id owner}}">{{last_date id owner}}</span>
               </div>
             </div>
-          {{else}}
-            <div id="tab{{_id}}" class="tab-pane fade">
-              <div id="{{_id}}" class="chart">
-                  {{dataChart _id id owner}}
-              </div>
+
+            <div id="{{_id}}" class="chart">
+                {{dataChart _id id owner}}
             </div>
-          {{/if}}
+          </div>
         {{/each}}
       </div>
 

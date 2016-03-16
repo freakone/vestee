@@ -1,0 +1,3 @@
+meteor build . && scp web.tar.gz root@vestee.freakone.pl:/home/vestee/
+
+cd /home/vestee/ && tar -zxf web.tar.gz && chown vestee:vestee /home/vestee/ -R && rm /home/vestee/bundle/programs/server/npm/npm-bcrypt/ -R && cd /home/vestee/bundle/programs/server/ && npm install && restart vestee
