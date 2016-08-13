@@ -100,7 +100,7 @@
 <layer number="154" name="FabDoc2" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="155" name="FabDoc3" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="199" name="Contour" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="200" name="200bmp" color="15" fill="0" visible="yes" active="yes"/>
+<layer number="200" name="200bmp" color="15" fill="0" visible="no" active="yes"/>
 <layer number="201" name="201bmp" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="202" name="202bmp" color="3" fill="10" visible="yes" active="yes"/>
 <layer number="203" name="203bmp" color="4" fill="10" visible="yes" active="yes"/>
@@ -3755,9 +3755,9 @@
 <rectangle x1="32.3596" y1="60.8076" x2="35.0012" y2="60.9092" layer="200"/>
 <rectangle x1="33.274" y1="60.9092" x2="33.6804" y2="61.0108" layer="200"/>
 <rectangle x1="5.08" y1="67.3608" x2="5.1816" y2="68.4784" layer="42"/>
-<rectangle x1="10.7696" y1="55.88" x2="52.7304" y2="64.516" layer="29"/>
-<rectangle x1="55.9816" y1="7.5184" x2="75.692" y2="44.5008" layer="29"/>
-<rectangle x1="-3.8608" y1="-0.9144" x2="9.3472" y2="43.3832" layer="29"/>
+<rectangle x1="10.7696" y1="55.88" x2="52.7304" y2="64.516" layer="30"/>
+<rectangle x1="55.9816" y1="7.5184" x2="75.692" y2="44.5008" layer="30"/>
+<rectangle x1="-3.8608" y1="-0.9144" x2="9.3472" y2="43.3832" layer="30"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
