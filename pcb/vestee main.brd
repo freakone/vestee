@@ -3757,7 +3757,7 @@
 <rectangle x1="5.08" y1="67.3608" x2="5.1816" y2="68.4784" layer="42"/>
 <rectangle x1="10.7696" y1="55.88" x2="52.7304" y2="64.516" layer="29"/>
 <rectangle x1="55.9816" y1="7.5184" x2="75.692" y2="44.5008" layer="29"/>
-<rectangle x1="4.064" y1="-2.7432" x2="17.272" y2="41.5544" layer="29"/>
+<rectangle x1="-3.8608" y1="-0.9144" x2="9.3472" y2="43.3832" layer="29"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
