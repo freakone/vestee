@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.4.0">
+<eagle version="7.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9748,7 +9748,6 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="P+5" library="supply1" deviceset="VCC" device=""/>
-<part name="P+6" library="supply1" deviceset="VCC" device=""/>
 <part name="P+7" library="supply1" deviceset="VCC" device=""/>
 <part name="P+8" library="supply1" deviceset="VCC" device=""/>
 <part name="SUPPLY3" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
@@ -9757,6 +9756,9 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <part name="P+10" library="supply1" deviceset="VCC" device=""/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0603"/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0603"/>
+<part name="R13" library="rcl" deviceset="R-EU_" device="M1206"/>
+<part name="R16" library="rcl" deviceset="R-EU_" device="M1206"/>
+<part name="SUPPLY5" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9825,7 +9827,6 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <instance part="GND9" gate="1" x="248.92" y="139.7"/>
 <instance part="GND10" gate="1" x="327.66" y="139.7"/>
 <instance part="P+5" gate="VCC" x="233.68" y="109.22"/>
-<instance part="P+6" gate="VCC" x="172.72" y="71.12"/>
 <instance part="P+7" gate="VCC" x="109.22" y="149.86"/>
 <instance part="P+8" gate="VCC" x="185.42" y="149.86"/>
 <instance part="SUPPLY3" gate="G$1" x="-20.32" y="111.76"/>
@@ -9834,6 +9835,9 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <instance part="P+10" gate="VCC" x="325.12" y="170.18"/>
 <instance part="R4" gate="G$1" x="241.3" y="152.4" rot="R270"/>
 <instance part="R5" gate="G$1" x="320.04" y="152.4" rot="R270"/>
+<instance part="R13" gate="G$1" x="-20.32" y="104.14" rot="R90"/>
+<instance part="R16" gate="G$1" x="-20.32" y="63.5" rot="R90"/>
+<instance part="SUPPLY5" gate="G$1" x="172.72" y="68.58"/>
 </instances>
 <busses>
 </busses>
@@ -9919,6 +9923,11 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <wire x1="241.3" y1="147.32" x2="241.3" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="144.78" x2="248.92" y2="144.78" width="0.1524" layer="91"/>
 <junction x="248.92" y="144.78"/>
+<pinref part="U$3" gate="G$1" pin="OE/"/>
+<wire x1="231.14" y1="154.94" x2="238.76" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="238.76" y1="154.94" x2="238.76" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="238.76" y1="144.78" x2="241.3" y2="144.78" width="0.1524" layer="91"/>
+<junction x="241.3" y="144.78"/>
 </segment>
 <segment>
 <pinref part="C8" gate="G$1" pin="2"/>
@@ -9929,6 +9938,11 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <wire x1="320.04" y1="147.32" x2="320.04" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="320.04" y1="144.78" x2="327.66" y2="144.78" width="0.1524" layer="91"/>
 <junction x="327.66" y="144.78"/>
+<pinref part="U$4" gate="G$1" pin="OE/"/>
+<wire x1="307.34" y1="154.94" x2="317.5" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="317.5" y1="154.94" x2="317.5" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="317.5" y1="144.78" x2="320.04" y2="144.78" width="0.1524" layer="91"/>
+<junction x="320.04" y="144.78"/>
 </segment>
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
@@ -9958,11 +9972,6 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
 <wire x1="0" y1="68.58" x2="0" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
-<pinref part="PRPIHERALS1" gate="G$1" pin="RIGHT"/>
-<wire x1="-20.32" y1="58.42" x2="-20.32" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R9" gate="G$1" pin="1"/>
@@ -10019,10 +10028,6 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <pinref part="P+5" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="R6" gate="G$1" pin="1"/>
-<pinref part="P+6" gate="VCC" pin="VCC"/>
-</segment>
-<segment>
 <pinref part="U$2" gate="G$1" pin="V1"/>
 <pinref part="U$2" gate="G$1" pin="V2"/>
 <wire x1="119.38" y1="139.7" x2="109.22" y2="139.7" width="0.1524" layer="91"/>
@@ -10043,11 +10048,6 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <pinref part="P+8" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="PRPIHERALS" gate="G$1" pin="RIGHT"/>
-<pinref part="SUPPLY3" gate="G$1" pin="VCC"/>
-<wire x1="-20.32" y1="99.06" x2="-20.32" y2="111.76" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="U$3" gate="G$1" pin="VDD"/>
 <pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="231.14" y1="162.56" x2="246.38" y2="162.56" width="0.1524" layer="91"/>
@@ -10064,6 +10064,20 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <wire x1="325.12" y1="162.56" x2="327.66" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="325.12" y1="167.64" x2="325.12" y2="162.56" width="0.1524" layer="91"/>
 <junction x="325.12" y="162.56"/>
+</segment>
+<segment>
+<pinref part="R13" gate="G$1" pin="2"/>
+<pinref part="SUPPLY3" gate="G$1" pin="VCC"/>
+<wire x1="-20.32" y1="109.22" x2="-20.32" y2="111.76" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R16" gate="G$1" pin="2"/>
+<pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
+<wire x1="-20.32" y1="68.58" x2="-20.32" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="SUPPLY5" gate="G$1" pin="VCC"/>
 </segment>
 </net>
 <net name="1-WIRE" class="0">
@@ -10281,6 +10295,11 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <wire x1="20.32" y1="43.18" x2="17.78" y2="43.18" width="0.1524" layer="91"/>
 <label x="15.24" y="43.18" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="CLK"/>
+<wire x1="279.4" y1="157.48" x2="276.86" y2="157.48" width="0.1524" layer="91"/>
+<label x="274.32" y="157.48" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LA/" class="0">
 <segment>
@@ -10292,6 +10311,11 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <pinref part="U$1" gate="G$1" pin="GPIO4"/>
 <wire x1="66.04" y1="63.5" x2="68.58" y2="63.5" width="0.1524" layer="91"/>
 <label x="68.58" y="63.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="LA/"/>
+<wire x1="279.4" y1="154.94" x2="276.86" y2="154.94" width="0.1524" layer="91"/>
+<label x="274.32" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="REST" class="0">
@@ -10807,6 +10831,18 @@ Source: www.silabs.com .. CP2101.pdf / cp2102.pdf. Spark Fun Electronics SKU : C
 <pinref part="R5" gate="G$1" pin="1"/>
 <wire x1="307.34" y1="160.02" x2="320.04" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="320.04" y1="160.02" x2="320.04" y2="157.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="PRPIHERALS" gate="G$1" pin="RIGHT"/>
+<pinref part="R13" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="PRPIHERALS1" gate="G$1" pin="RIGHT"/>
+<pinref part="R16" gate="G$1" pin="1"/>
 </segment>
 </net>
 </nets>
